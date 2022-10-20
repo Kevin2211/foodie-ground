@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production'){
+    require ('dotenv').config()
+}
+
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -8,8 +12,13 @@ const mongoose = require('mongoose')
 const ExpressError = require('./utils/ExpressError')
 const campgroundRouter = require('./routes/campgroundRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
+const userRouter = require('./routes/userRoutes')
 const session = require('express-session')
-const flash = require('flash')
+const flash = require('connect-flash')
+const passport = require('passport')
+const LocalStrategy = require('passport-local')
+const User = require('./models/user')
+
 
 //connect mongoose to server
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {useNewUrlParser: true, useUnifiedTopology: true})
@@ -50,11 +59,34 @@ const sessionConfig ={
 }
 app.use(session(sessionConfig))
 
+//passport
+app.use(passport.initialize())
+app.use(passport.session())
+passport.use(new LocalStrategy(User.authenticate()))
 
-//campground routes
-app.use('/campgrounds', campgroundRouter)
-//review routes
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
+
+//flash
+app.use(flash())
+app.use((req,res,next) => {
+    if(!['/users/login', '/campgrounds'].includes(req.originalUrl)){
+        req.session.returnTo = req.originalUrl
+    }
+    res.locals.currentUser = req.user
+    res.locals.success = req.flash('success')
+    res.locals.error = req.flash('error')
+    next()
+})
+
+
+
+//routes
 app.use('/campgrounds/:id/reviews', reviewRouter)
+app.use('/campgrounds', campgroundRouter)
+app.use('/users', userRouter)
+
+
 
 
 app.all('*', (req,res, next) => {
