@@ -21,7 +21,7 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)]
 //function to seed the database
 const seedDb = async () => {
     await Campground.deleteMany({})
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 5; i++) {
         const random1000 = Math.floor(Math.random()*1000)
         const camp = new Campground({
             owner: '634db8e891ef126607f47cd9',

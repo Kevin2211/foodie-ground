@@ -1,16 +1,6 @@
-// const input = document.getElementById("location-input");
-// const options = {
-//   bounds: defaultBounds,
-//   componentRestrictions: { country: "us" },
-//   fields: ["address_components", "geometry", "icon", "name"],
-//   strictBounds: false,
-//   types: ["establishment"],
-// };
-// const autocomplete = new google.maps.places.Autocomplete(input, options);
 
 
-
-function initMap() {
+async function initMap() {
     autocomplete = new google.maps.places.Autocomplete(document.getElementById('location-input'), 
         {
             componentRestrictions: { country: "us" },
@@ -50,7 +40,5 @@ function initMap() {
             zoom: 9
         })
 
-
-    
 }
 initMap()

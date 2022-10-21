@@ -2,9 +2,22 @@ const User = require('../models/user')
 
 module.exports.registerUser = async (req,res) => {
     try {
-            const { email, username, password } = req.body
-    const user = new User({email, username, password})
+    const { firstName,lastName, email, username, password } = req.body
+    const user = new User({firstName,lastName,email, username, password})
+    console.log(req.file)
+
+    
+    if( typeof req.file !== "undefined"){
+        const image = { url: req.file.path, fileName: req.file.filename }
+        user.profileImage = image
+    }else{
+        const image = { url: 'https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png', fileName: 'default' }
+        user.profileImage = image
+    }
+
+    
     const registeredUser = await User.register(user, password)
+    console.log(registeredUser)
     req.login(registeredUser, err => {
         if(err) return next(err)
         req.flash('success', "Welcome to Campify")
@@ -20,8 +33,8 @@ module.exports.registerUser = async (req,res) => {
 module.exports.loginPost = (req, res) => {
     req.flash('success', 'Welcome back')
     const redirectUrl = req.session.returnTo || '/campgrounds'
-    console.log('sessionLoginPost: ', req.session)
-        delete req.session.returnTo
+    console.log(req.user)
+    delete req.session.returnTo
     res.redirect(redirectUrl)
 
 }

@@ -17,12 +17,12 @@ module.exports.reviewSchema = Joi.object({
     }).required()
 })
 
-module.exports.userSchema = Joi.object({
-    user: Joi.object({
-        username: Joi.string().required(),
-        rating: Joi.number().required().min(0).max(5)
-    }).required()
-})
+// module.exports.userSchema = Joi.object({
+//     user: Joi.object({
+//         username: Joi.string().required(),
+//         rating: Joi.number().required().min(0).max(5)
+//     }).required()
+// })
 
 
 
