@@ -1,14 +1,32 @@
 const Joi = require('joi')
-module.exports.campgroundSchema = Joi.object({
-    campground: Joi.object({
+
+let itemInfo = Joi.object().keys({
+        dishName: Joi.string().required(),
+        price: Joi.number().required(),
+        category: Joi.string().required()
+})
+
+module.exports.storeSchema = Joi.object({
+    store: Joi.object({
         title: Joi.string().required(),
-        price: Joi.number().required().min(0),
+        hours: Joi.array().required(),
         // image: Joi.string().required(),
         location: Joi.string().required(),
         description: Joi.string().required()
     }).required(),
-    deleteImages: Joi.array()
-})
+    deleteImages: Joi.array(),
+    menu: Joi.array().items(itemInfo)
+        
+    })
+    
+    // Joi.array().items( 
+    //     {
+    //     dishName: Joi.string().required(),
+    //     price: Joi.number().required(),
+    //     category: Joi.string().required()
+    // }
+    // )
+
 
 module.exports.reviewSchema = Joi.object({
     review: Joi.object({
@@ -16,14 +34,6 @@ module.exports.reviewSchema = Joi.object({
         rating: Joi.number().required().min(0).max(5)
     }).required()
 })
-
-// module.exports.userSchema = Joi.object({
-//     user: Joi.object({
-//         username: Joi.string().required(),
-//         rating: Joi.number().required().min(0).max(5)
-//     }).required()
-// })
-
 
 
 

@@ -20,8 +20,8 @@ module.exports.registerUser = async (req,res) => {
     console.log(registeredUser)
     req.login(registeredUser, err => {
         if(err) return next(err)
-        req.flash('success', "Welcome to Campify")
-        res.redirect('/campgrounds')
+        req.flash('success', "Welcome to Foodie Ground!")
+        res.redirect('/stores')
     })
     } catch (error) {
         req.flash('error', error.message)
@@ -31,8 +31,8 @@ module.exports.registerUser = async (req,res) => {
 }
 
 module.exports.loginPost = (req, res) => {
-    req.flash('success', 'Welcome back')
-    const redirectUrl = req.session.returnTo || '/campgrounds'
+    req.flash('success', `Welcome back ${req.user.firstName}` )
+    const redirectUrl = req.session.returnTo || '/stores'
     console.log(req.user)
     delete req.session.returnTo
     res.redirect(redirectUrl)
@@ -45,7 +45,11 @@ module.exports.logout = (req, res) => {
             return next(error)
         }
         req.flash('success', 'Successfully logged out!')
-        res.redirect('/campgrounds')
+        res.redirect('/stores')
     })
 
 }
+module.exports.showUserGet = async (req,res) => {{
+    const user = await User.findById(req.params.id)
+    res.render('users/showUser', { user })
+}}

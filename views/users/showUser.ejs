@@ -1,17 +1,17 @@
 <%- layout('layouts/boilerplate.ejs') %>
 <div class="row">
-    <% if(currentUser) {%> 
+
     <div class="col-6 offset-3">
         <div class="card mb-3" style="width: 40rem;">
-            <img src="<%= currentUser.profileImage.url %> " class="card-img-top" alt="...">
+            <img src="<%= user.profileImage.url %> " class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title"><%= currentUser.firstName %> <%= currentUser.lastName %></h5>
+              <h5 class="card-title"><%= user.firstName %> <%= user.lastName %></h5>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Username: <%= currentUser.username %></li>
-                    <li class="list-group-item">Email: <%= currentUser.email %> </li>
+                    <li class="list-group-item">Username: <%= user.username %></li>
+                    <li class="list-group-item">Email: <%= user.email %> </li>
 
                     <li class="list-group-item">
-                        <a href="/campgrounds"><button class="btn btn-warning">Go Back</button></a>
+                        <a href="/stores"><button class="btn btn-warning">Go Back</button></a>
                     </li>
                   </ul>
 
@@ -19,7 +19,7 @@
           </div>
 
     </div>
-    <% } %> 
+
 </div>
 
 </form>

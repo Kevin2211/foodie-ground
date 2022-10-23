@@ -3,13 +3,13 @@
         <div class="col-sm-12 col-md-8 col-lg-6 ">
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <% foundCampground.images.forEach((image,i) => { %> 
+              <% foundStore.images.forEach((image,i) => { %> 
               <div class="carousel-item <%= i === 0 ? 'active' : '' %> ">
                 <img src="<%= image.url %>" class="d-block w-100" alt="...">
               </div>
               <% }) %> 
             </div>
-            <% if(foundCampground.images.length > 1) { %> 
+            <% if(foundStore.images.length > 1) { %> 
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
@@ -24,19 +24,25 @@
             <div class="card mb-3" style="width: 40rem;">
 
                 <div class="card-body">
-                  <h5 class="card-title">Title: <%= foundCampground.title %></h5>
+                  <h5 class="card-title">Store Name: <%= foundStore.title %></h5>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item" id='location' value="<%= foundCampground.location.toString() %>">Location: <%= foundCampground.location %></li>
-                        <li class="list-group-item">Owner: <%= foundCampground.owner.username %> </li>
-                        <li class="list-group-item"><%= foundCampground.description %></li>
+                        <li class="list-group-item" id='location' value="<%= foundStore.location.toString() %>">Location: <%= foundStore.location %></li>
+                        <li class="list-group-item"><a href="/users/<%= foundStore.owner._id %>">
+                          Owner: <%= foundStore.owner.username %>
+                        </a> </li>
+                        
+                        <li class="list-group-item">Open: <%= foundStore.hours[0] %> </li>
+                        <li class="list-group-item">Close: <%= foundStore.hours[1] %> </li>
+                        </li>
+                        <li class="list-group-item"><%= foundStore.description %></li>
                         <li class="list-group-item">
-                            <a href="/campgrounds"><button class="btn btn-warning">Go Back</button></a>
+                            <a href="/stores"><button class="btn btn-warning">Go Back</button></a>
                         </li>
                       </ul>
-                      <% if(currentUser && currentUser._id.equals(foundCampground.owner._id)) {%> 
+                      <% if(currentUser && currentUser._id.equals(foundStore.owner._id)) {%> 
                       <div class="card-footer d-flex">
-                        <a href="/campgrounds/<%= foundCampground._id %>/edit " class="btn btn-primary">Edit</a>
-                        <form action="/campgrounds/<%= foundCampground._id %>?_method=DELETE" method="post">
+                        <a href="/stores/<%= foundStore._id %>/edit " class="btn btn-primary">Edit</a>
+                        <form action="/stores/<%= foundStore._id %>?_method=DELETE" method="post">
                           <button class="btn btn-danger mx-2">Delete</button>
                           </form>
                       </div>
@@ -48,9 +54,38 @@
 
         </div>
         <div class="col-sm-12 col-md-4 col-lg-6 ">
+          <div class="card mb-3" style="width: 40rem;">
+            <div class="card-body">
+              <h3 class="card-title">Menu</h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price ($)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% foundStore.menu.items.forEach((item,i) => {%> 
+                  <tr>
+                    <th scope="row"><%= i %> </th>
+                    <td><%= item.dishName %> </td>
+                    <td><%= item.price %></td>
+                  </tr>
+                  <% }) %> 
+                </tbody>
+              </table>
+      
+            </div>
+            <% if(currentUser && currentUser._id.equals(foundStore.owner._id)) {%> 
+              <div class="card-footer d-flex">
+                <a href="/stores/<%= foundStore._id %>/menu/<%= foundStore.menu._id %>/edit" class="btn btn-primary">Edit</a>
+              </div>
+              <% } %> 
+          </div>
           <% if(currentUser){ %> 
             <h2>Leave a review</h2>
-            <form class="needs-validation mb-3" action="/campgrounds/<%= foundCampground._id %>/reviews" method="post" novalidate>
+            <form class="needs-validation mb-3" action="/stores/<%= foundStore._id %>/reviews" method="post" novalidate>
               <div class="mb-3">
                 <label for="rating">Rating:</label>
                 <fieldset class="starability-coinFlip">
@@ -89,15 +124,20 @@
               <% for(let review of reviews){ %>
               <div class="card">
                 <div class="mb-3 card-body">
+                  <a href="/users/<%= review.user._id %>" style="text-decoration: none;" >
+                    <p class="card-text mb-2"> <small class="text-muted">
+                    <img alt="SourceLink" style="border-radius: 50%;" height="20" src="<%= review.user.profileImage.thumbnail %> "/> 
+                    <%= review.user.username %></small></p>
+                  </a>
+
                   <p class="starability-result" data-rating= <%= review.rating %>>
                     
                   </p>
                   <p class="card-text">Review: <%= review.body %> </p>
                   <p class="card-text"> <small class="text-muted">
-                    <img alt="SourceLink" style="border-radius: 50%;" height="20" src="<%= review.user.profileImage.thumbnail %> "/> 
-                    <%= review.user.username %></small>  </p>
+                  Created at <%= review._id.getTimestamp().toString().substr(0, 21) %></small> </p>
                   <% if(currentUser && review.user._id.equals(currentUser._id)) {%> 
-                  <form action="/campgrounds/<%= foundCampground._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
+                  <form action="/stores/<%= foundStore._id %>/reviews/<%= review._id %>?_method=DELETE" method="post">
                   <button class="btn btn-sm btn-danger">Delete</button>
                   </form>  
                   <% } %> 

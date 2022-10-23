@@ -4,7 +4,7 @@ const password = require('passport')
 const catchAsync = require('../utils/catchAsync')
 const ExpressError = require('../utils/ExpressError')
 const User = require('../models/user')
-const { registerUser, loginPost, logout } = require('../controllers/userController')
+const { registerUser, loginPost, logout, showUserGet } = require('../controllers/userController')
 var multer = require('multer')
 const { storage } = require('../cloudinary')
 var upload = multer({storage})
@@ -19,6 +19,6 @@ router.post('/login', password.authenticate('local',{failureFlash: true, failure
 
 router.get('/logout', logout)
 
-router.get('/:id', (req,res) => {res.render('users/showUser')})
+router.get('/:id', catchAsync(showUserGet))
 
 module.exports = router

@@ -10,7 +10,7 @@ const ejsMate = require('ejs-mate')
 const methodOverride = require('method-override')
 const mongoose = require('mongoose')
 const ExpressError = require('./utils/ExpressError')
-const campgroundRouter = require('./routes/campgroundRoutes')
+const storeRouter = require('./routes/storeRoutes')
 const reviewRouter = require('./routes/reviewRoutes')
 const userRouter = require('./routes/userRoutes')
 const session = require('express-session')
@@ -70,7 +70,7 @@ passport.deserializeUser(User.deserializeUser())
 //flash
 app.use(flash())
 app.use((req,res,next) => {
-    if(!['/users/login', '/campgrounds'].includes(req.originalUrl)){
+    if(!['/users/login', '/stores'].includes(req.originalUrl)){
         req.session.returnTo = req.originalUrl
     }
     res.locals.currentUser = req.user
@@ -82,8 +82,8 @@ app.use((req,res,next) => {
 
 
 //routes
-app.use('/campgrounds/:id/reviews', reviewRouter)
-app.use('/campgrounds', campgroundRouter)
+app.use('/stores/:id/reviews', reviewRouter)
+app.use('/stores', storeRouter)
 app.use('/users', userRouter)
 
 

@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose')
-const Campground = require('../models/campground')
+const Store = require('../models/store')
 
 const cities = require('./cities')
 const {places, descriptors } = require('./seedHelpers')
@@ -20,10 +20,10 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)]
 
 //function to seed the database
 const seedDb = async () => {
-    await Campground.deleteMany({})
+    await Store.deleteMany({})
     for (let i = 0; i < 5; i++) {
         const random1000 = Math.floor(Math.random()*1000)
-        const camp = new Campground({
+        const camp = new Store({
             owner: '634db8e891ef126607f47cd9',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,

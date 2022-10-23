@@ -1,0 +1,85 @@
+<% layout('layouts/boilerplate') %> 
+    <div class="row">
+        <h1 class="text-center">New Store</h1>
+        <div class="col-6 offset-3">
+        <form action="/stores" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+            <div class="mb-3">
+                <label class="form-label" for="title">Store Name:</label>
+                <input type="text" class="form-control" name="store[title]" id="title" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class='form-label' for="location-input">Location:</label>
+                <input type="text" class="form-control mb-3" name="store[location]" id="location-input" required>     
+                <div class="valid-feedback">
+                    Looks good!
+                </div>    
+                <div id="map" style="width: 300px; height: 300px;">
+        
+                </div>
+                
+            </div>
+            <div class="mb-3">
+
+                    <label for="image" class="form-label">Add image:</label>
+                    <input class="form-control" name="image" type="file" id="image" multiple required>
+                  
+            </div>
+
+            <label class='form-label' for="price">Hours:</label>
+            <div class="input-group mb-3">
+                
+                <label for="open" class="form-label">Open: </label>
+                <input type="time" class="form-control" name="store[hours]" id="open" required>
+                <label for="close" class="form-label">Close: </label>
+                <input type="time" class="form-control" name="store[hours]" id="close" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+              </div>
+            <div class="mb-3">
+                <label class='form-label' for="description">Description:</label>
+                <textarea type="text" class="form-control" name="store[description]" id="description" required></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>            
+            </div>
+            <div class="mb-3">
+                <label class='form-label' for="menu">Menu:</label>
+                <div id="container">
+                <div class="d-flex  mb-2" id="menuItems">
+                    <label class="me-1" for="">Item: </label>
+                    <input type="text" class="form-control me-1" name="menu[0][dishName]" required>
+                    <label class="me-1" for="">Price: </label>
+                    <input type="number" class="form-control me-1" name="menu[0][price]" required>
+                    <label class="me-1" for="">Category: </label>
+                    <select class="form-select me-1" aria-label="Default select example" name="menu[0][category]" required>
+                        <option value="main dish">Main dish</option>
+                        <option value="appetizers">Appetizer</option>
+                        <option value="desserts">Dessert</option>
+                        <option value="drinks">Drink</option>
+                    </select>
+                </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <button type="button" id="addMenuItem" class="btn btn-outline-success btn-sm ">Add Item</button>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>   
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-success">Add store</button>
+            </div>
+            
+        </form>
+        <a href="/stores"><button class="btn btn-warning">Cancel</button></a>
+        </div>
+    </div>
+
+
+
+    <script src="/renderMapNew.js"></script>

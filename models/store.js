@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
-const { campgroundSchema } = require('../schemaJoi')
+const { storeSchema: storeSchema } = require('../schemaJoi')
 const review = require('./review')
 const Schema = mongoose.Schema
+const menu = require('./menu')
+
 
 const ImageSchema = new Schema({
     url: String,
@@ -11,12 +13,14 @@ const ImageSchema = new Schema({
 ImageSchema.virtual('thumbnail').get(function() {
     return this.url.replace('/upload', '/upload/w_200')
 })
-const CampgroundSchema = new Schema({
+const StoreSchema = new Schema({
     title: String,
     images: [
         ImageSchema
     ],
-    price: Number,
+    hours: [
+
+    ],
     description: String,
     location: String,
     owner: {
@@ -28,17 +32,25 @@ const CampgroundSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Review'
         }
-    ]
+    ],
+    menu: {
+        type: Schema.Types.ObjectId,
+        ref: 'Menu'
+    }
 })
 
-CampgroundSchema.post('findOneAndDelete', async function(doc) {
+StoreSchema.post('findOneAndDelete', async function(doc) {
     if(doc){
         await review.deleteMany({
             _id: {
                 $in: doc.reviews
             }
         })
+        await menu.deleteOne({
+            _id: doc.menu._id
+        })
     }
+
 })
 
-module.exports = mongoose.model('Campground', CampgroundSchema)
+module.exports = mongoose.model('Store', StoreSchema)

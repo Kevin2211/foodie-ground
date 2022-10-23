@@ -40,5 +40,34 @@ async function initMap() {
             zoom: 9
         })
 
+        const addBtn = document.getElementById('addMenuItem')
+        let itemContainer = document.getElementById('container')
+        let lastInputFields = itemContainer.lastElementChild.querySelectorAll(['input', 'select'])
+        let i = 1
+        addBtn.addEventListener('click', () => {
+            if(lastInputFields[0].value === '' || lastInputFields[1].value === '' || lastInputFields[2].value === ''){
+                alert("Please fill out all input fields before adding more item!")
+
+                return
+            }else{
+            const html = `<div class="d-flex  mb-2 >
+                    <label class="me-1" for="">Item: </label>
+                    <input type="text" class="form-control me-1" name="menu[${i}][dishName]" required>
+                    <label class="me-1" for="">Price: </label>
+                    <input type="number" class="form-control me-1" name="menu[${i}][price]" required>
+                    <label class="me-1" for="">Category: </label>
+                    <select class="form-select me-1" aria-label="Default select example" name="menu[${i}][category]" required>
+                        <option selected>Open this select menu</option>
+                        <option value="main dish">Main dish</option>
+                        <option value="appetizers">Appetizer</option>
+                        <option value="desserts">Dessert</option>
+                        <option value="drinks">Drink</option>
+                    </select>
+                </div>`
+            itemContainer.lastElementChild.insertAdjacentHTML('afterend', html)
+            i++
+            lastInputFields = itemContainer.lastElementChild.querySelectorAll(['input', 'select'])
+        }
+        })
+
 }
-initMap()
