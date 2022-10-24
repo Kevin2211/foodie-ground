@@ -1,6 +1,9 @@
 const Menu = require('../models/menu')
 const Store = require('../models/store')
 const {cloudinary} = require('../cloudinary/index')
+const User = require('../models/user')
+
+
 
 module.exports.stores = async (req,res) => {
     const stores = await Store.find({})
@@ -15,12 +18,16 @@ module.exports.newStorePost = async (req,res,next) => {
 
     const newStore = new Store({title, location, images, hours, description})
     const menu = new Menu({ items: req.body.menu, store: newStore._id})
-    console.log(newStore)
+    const user = await User.findById(req.user._id)
+
     await menu.save()
 
     newStore.menu = menu._id
     newStore.owner = req.user._id
 
+    user.stores.push(newStore)
+
+    await user.save()
     await newStore.save()
 
     req.flash('success', 'Successfully made a new store')
@@ -88,3 +95,4 @@ module.exports.editMenuPost = async (req,res) => {
 
     res.redirect(`/stores/${req.params.id}`)
 }
+

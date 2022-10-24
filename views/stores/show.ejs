@@ -21,8 +21,22 @@
             <% } %> 
           </div>
 
-            <div class="card mb-3" style="width: 40rem;">
+            <div class="card mb-3 position-relative">
+              <% if(currentUser){ %> 
+              <div class="position-absolute" style="right: 10px; top: 10px;"> 
 
+                  <% if(currentUser.favoriteStores.includes(foundStore._id)) {%> 
+                  <a href="/users/<%= currentUser._id %>/favorites/<%= foundStore._id %>/remove">
+                  <i class="fa fa-bookmark-o" style="font-size:25px; color: red;" onclick="return this.style.color = 'black'"></i>
+                  </a>
+                  <% }else { %> 
+                    <a href="/users/<%= currentUser._id %>/favorites/<%= foundStore._id %>">
+                  <i class="fa fa-bookmark-o" style="font-size:25px;" onclick="return this.style.color = 'red'"></i>
+                    </a>
+                  <% } %> 
+
+              </div>
+              <% } %> 
                 <div class="card-body">
                   <h5 class="card-title">Store Name: <%= foundStore.title %></h5>
                     <ul class="list-group list-group-flush">

@@ -6,16 +6,24 @@
         <div class="mb-3">
             <label class="form-label" for="firstName">First Name:</label>
             <input type="text" class="form-control" name="firstName" id="firstName" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+
         </div>
         <div class="mb-3">
             <label class="form-label" for="lastName">Last Name:</label>
             <input type="text" class="form-control" name="lastName" id="lastName" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+ 
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="lastName">Are you a store owner or an user?</label>
+            <input class="form-check-input" type="radio" name="accountType" value="owner" id="owner">
+            <label class="form-check-label" for="owner">
+              Store Owner
+            </label>
+            <input class="form-check-input" type="radio" name="accountType" value="user" id="user">
+            <label class="form-check-label" for="user">
+              User
+            </label>
+ 
         </div>
         <div class="mb-3">
 
@@ -26,23 +34,17 @@
         <div class="mb-3">
             <label class="form-label" for="username">Username:</label>
             <input type="text" class="form-control" name="username" id="username" required>
-            <div class="valid-feedback">
-                Looks good!
-            </div>
+
         </div>
         <div class="mb-3">
             <label class='form-label' for="email">email:</label>
             <input type="email" class="form-control" name="email" id="email" required>     
-            <div class="valid-feedback">
-                Looks good!
-            </div>       
+  
         </div>
         <div class="mb-3">
             <label class='form-label' for="password">Password:</label>
             <input type="password" class="form-control" name="password" id="password" required>      
-            <div class="valid-feedback">
-                Looks good!
-            </div>      
+      
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-success">Register</button>

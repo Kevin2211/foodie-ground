@@ -25,7 +25,24 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    accountType: {
+        type: String,
+        enum: ['user', 'owner'],
+        required: true
+    },
+    stores: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Store'
+        }
+    ],
+    favoriteStores: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Store'
+        }
+    ]
 })
 
 UserSchema.plugin(passportLocalMongoose)

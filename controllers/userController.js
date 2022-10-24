@@ -1,10 +1,11 @@
+const Store = require('../models/store')
 const User = require('../models/user')
 
 module.exports.registerUser = async (req,res) => {
     try {
-    const { firstName,lastName, email, username, password } = req.body
-    const user = new User({firstName,lastName,email, username, password})
-    console.log(req.file)
+    const { firstName,lastName, email, username, password, accountType } = req.body
+    const user = new User({firstName,lastName,email, username, password, accountType})
+
 
     
     if( typeof req.file !== "undefined"){
@@ -49,7 +50,41 @@ module.exports.logout = (req, res) => {
     })
 
 }
-module.exports.showUserGet = async (req,res) => {{
+module.exports.showUserGet = async (req,res) => {
     const user = await User.findById(req.params.id)
     res.render('users/showUser', { user })
-}}
+}
+
+module.exports.showUserStore = async (req,res) => {
+    const id = req.params.id
+    const user = await User.findById(id).populate('stores')
+    console.log('stores',user.stores)
+
+    res.render('users/myStores', { user })
+}
+
+
+
+module.exports.showFavorites = async (req,res) => {
+    const id = req.params.id
+    const user = await User.findById(id).populate('favoriteStores')
+    res.render('users/favorites', { user })
+}
+
+module.exports.addFavorites = async (req,res) => {
+    const store = await Store.findById(req.params.storeId)
+    const user = await User.findById(req.params.id)
+
+    user.favoriteStores.push(store)
+    await user.save()
+    res.redirect(`/stores/${req.params.storeId}`)
+}
+
+module.exports.removeFavorites = async (req,res) => {
+    const store = await Store.findById(req.params.storeId)
+    const user = await User.findById(req.params.id)
+
+    user.favoriteStores.pop(store)
+    await user.save()
+    res.redirect(`/stores/${req.params.storeId}`)
+}
