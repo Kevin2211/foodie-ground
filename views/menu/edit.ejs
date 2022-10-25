@@ -33,11 +33,12 @@
 <script>
         const addBtn = document.getElementById('addMenuItem')
         let itemContainer = document.getElementById('container')
-        let lastInputFields = itemContainer.lastElementChild.querySelectorAll(['input', 'select'])
+
         let i = 1
 
 
         addBtn.addEventListener('click', () => {
+            let lastInputFields = itemContainer.lastElementChild.querySelectorAll(['input', 'select'])
             if(lastInputFields[0].value === '' || lastInputFields[1].value === '' || lastInputFields[2].value === ''){
                 alert("Please fill out all input fields before adding more item!")
 

@@ -77,6 +77,7 @@ module.exports.addFavorites = async (req,res) => {
 
     user.favoriteStores.push(store)
     await user.save()
+    req.flash('success', 'Saved to favorites!')
     res.redirect(`/stores/${req.params.storeId}`)
 }
 
@@ -86,5 +87,6 @@ module.exports.removeFavorites = async (req,res) => {
 
     user.favoriteStores.pop(store)
     await user.save()
+    req.flash('error', 'Removed from favorites!')
     res.redirect(`/stores/${req.params.storeId}`)
 }

@@ -92,7 +92,7 @@ module.exports.editMenuPost = async (req,res) => {
     }
     const menu = await Menu.findByIdAndUpdate(req.params.menuId, { items: items})
     menu.save()
-
+    req.flash('success', "Successfully edited menu!")
     res.redirect(`/stores/${req.params.id}`)
 }
 

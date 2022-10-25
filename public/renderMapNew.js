@@ -42,9 +42,10 @@ async function initMap() {
 
         const addBtn = document.getElementById('addMenuItem')
         let itemContainer = document.getElementById('container')
-        let lastInputFields = itemContainer.lastElementChild.querySelectorAll(['input', 'select'])
+
         let i = 1
         addBtn.addEventListener('click', () => {
+            let lastInputFields = itemContainer.lastElementChild.querySelectorAll(['input', 'select'])
             if(lastInputFields[0].value === '' || lastInputFields[1].value === '' || lastInputFields[2].value === ''){
                 alert("Please fill out all input fields before adding more item!")
 
@@ -63,6 +64,8 @@ async function initMap() {
                         <option value="desserts">Dessert</option>
                         <option value="drinks">Drink</option>
                     </select>
+                    <img class="my-auto" onclick="return this.parentNode.remove();"
+                    src="/icons/cancelButton.png" alt="" style="height: 20px; width: 20px;">
                 </div>`
             itemContainer.lastElementChild.insertAdjacentHTML('afterend', html)
             i++
