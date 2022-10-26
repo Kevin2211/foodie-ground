@@ -37,6 +37,7 @@ const StoreSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Menu'
     }
+
 })
 
 StoreSchema.post('findOneAndDelete', async function(doc) {
@@ -52,5 +53,6 @@ StoreSchema.post('findOneAndDelete', async function(doc) {
     }
 
 })
+
 
 module.exports = mongoose.model('Store', StoreSchema)

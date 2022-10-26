@@ -29,6 +29,7 @@ module.exports.newStorePost = async (req,res,next) => {
 
     await user.save()
     await newStore.save()
+    console.log(await Store.findById(newStore._id))
 
     req.flash('success', 'Successfully made a new store')
     res.redirect(`/stores/${newStore._id}`)

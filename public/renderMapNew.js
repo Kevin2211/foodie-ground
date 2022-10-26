@@ -32,6 +32,7 @@ async function initMap() {
                 position: lngLat,
                 map,
                 title: "Hello World!",
+                icon: '/icons/marker.png'
             });
         }
 

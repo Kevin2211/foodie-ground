@@ -61,3 +61,16 @@
         <a href="/stores"><button class="btn btn-warning">Cancel</button></a>
         </div>
     </div>
+
+    <script>
+        async function initMap() {
+        autocomplete = new google.maps.places.Autocomplete(document.getElementById('location'), 
+        {
+            componentRestrictions: { country: "us" },
+            fields: [],
+            types: ['address'],
+    
+        })
+        }
+
+    </script>
