@@ -1,8 +1,11 @@
 <% layout('layouts/boilerplate') %> 
     <div class="row">
-        <h1 class="text-center">New Store</h1>
-        <div class="col-6 offset-3">
-        <form action="/stores" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+        <div class="col-lg-6 col-md-6 h-30">
+            <img src="/icons/new-store.jpg" id="new-store" alt="">
+        </div>
+        <div class="card col-lg-6 col-md-6">
+        <form action="/stores" method="post" class="needs-validation mx-auto my-auto" enctype="multipart/form-data" novalidate>
+            <h3 class="text-center">New Store</h3>
             <div class="mb-3">
                 <label class="form-label" for="title">Store Name:</label>
                 <input type="text" class="form-control" name="store[title]" id="title" required>
@@ -23,7 +26,7 @@
             </div>
             <div class="mb-3">
 
-                    <label for="image" class="form-label">Add image:</label>
+                    <label for="image" class="form-label">Add images:</label>
                     <input class="form-control" name="image" type="file" id="image" multiple required>
                   
             </div>
@@ -67,18 +70,21 @@
                 </div>
             </div>
             <div class="mb-3">
-                <button type="button" id="addMenuItem" class="btn btn-outline-success btn-sm ">Add Item</button>
+                <button type="button" id="addMenuItem" class="btn btn-outline-success btn-sm ">Add More Item</button>
                 <div class="valid-feedback">
                     Looks good!
                 </div>   
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 text-center">
                 <button type="submit" class="btn btn-success">Add store</button>
             </div>
             
         </form>
-        <a href="/stores"><button class="btn btn-warning">Cancel</button></a>
+        <div class="text-center mb-3">
+            <a href="/stores"><button class="btn btn-warning">Cancel</button></a>
+        </div>
+
         </div>
     </div>
 

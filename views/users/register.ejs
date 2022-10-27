@@ -1,9 +1,13 @@
 <%- layout('layouts/boilerplate.ejs') %>
 <div class="row">
-    <h1 class="text-center">Register</h1>
-    <div class="col-6 offset-3">
-    <form action="/users/register" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
-        <div class="mb-3">
+    <div class="col-lg-4 col-md-4" style="position: relative;">
+        <img id="register-img" src="/icons/register.png" alt="">
+    </div>
+    <div class="card col-lg-8 col-md-8" >
+
+    <form action="/users/register" method="post" class="needs-validation mx-auto my-auto" style="width: 70%;" enctype="multipart/form-data" novalidate>
+            <h3 class="text-center mt-3">Register</h3>
+        <div class="mb-3 ">
             <label class="form-label" for="firstName">First Name:</label>
             <input type="text" class="form-control" name="firstName" id="firstName" required>
 
@@ -46,8 +50,8 @@
             <input type="password" class="form-control" name="password" id="password" required>      
       
         </div>
-        <div class="mb-3">
-            <button type="submit" class="btn btn-success">Register</button>
+        <div class="mb-3 text-center">
+            <button type="submit" class="btn btn-primary">Register</button>
         </div>
         
     </form>

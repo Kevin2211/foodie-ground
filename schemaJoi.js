@@ -19,13 +19,6 @@ module.exports.storeSchema = Joi.object({
         
     })
     
-    // Joi.array().items( 
-    //     {
-    //     dishName: Joi.string().required(),
-    //     price: Joi.number().required(),
-    //     category: Joi.string().required()
-    // }
-    // )
 
 
 module.exports.reviewSchema = Joi.object({

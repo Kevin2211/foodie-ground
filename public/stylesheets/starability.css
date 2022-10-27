@@ -128,7 +128,7 @@
   .starability-coinFlip {
     display: block;
     position: relative;
-    width: 150px;
+    width: 150px !important;
     min-height: 60px;
     padding: 0;
     border: none;
@@ -300,3 +300,5 @@
     -webkit-animation-timing-function: ease-in-out;
             animation-timing-function: ease-in-out;
   }
+
+ 

@@ -1,8 +1,12 @@
 <%- layout('layouts/boilerplate.ejs') %>
 <div class="row">
-    <h1 class="text-center">Login</h1>
-    <div class="col-6 offset-3">
-    <form action="/users/login" method="post" class="needs-validation" novalidate>
+    <div class="col-lg-4 col-md-4" style="position: relative;">
+        <img id="register-img" src="/icons/login.jpg" alt="">
+    </div>
+    <div class="card col-lg-8 col-md-8">
+   
+    <form action="/users/login" method="post" class="needs-validation mx-auto my-auto" style="width: 50%;" novalidate>
+            <h3 class="text-center mt-3">Login</h3> 
         <div class="mb-3">
             <label class="form-label" for="username">Username:</label>
             <input type="text" class="form-control" name="username" id="username" required>

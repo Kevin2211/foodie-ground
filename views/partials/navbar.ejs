@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/stores">Foodie Ground</a>
+      <a class="navbar-brand" href="/" style="font-family: 'Orbitron', sans-serif; font-weight: 400;">Foodie Ground</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -8,7 +8,9 @@
         <div class="navbar-nav">
         <ul class="navbar-nav">
           <% if(currentUser){ %> 
- 
+            <li class="nav-item">
+              <a class="nav-link active" href="/stores">Explore</a>
+            </li>
           <% if(currentUser.accountType === 'owner') {%> 
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="/users/<%= currentUser._id %>/mystores">My Stores</a>
