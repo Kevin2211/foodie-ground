@@ -20,8 +20,9 @@ const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 
 
+
 //connect mongoose to server
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
 const db = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error'))
 db.once('open', () => {
@@ -34,6 +35,8 @@ app.use(methodOverride('_method') )
 //set view engine
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
+
+
 
 
 //To parse request body
@@ -71,7 +74,7 @@ passport.deserializeUser(User.deserializeUser())
 //flash
 app.use(flash())
 app.use((req,res,next) => {
-    if(!['/users/login', '/stores'].includes(req.originalUrl)){
+    if(!['/users/login', '/stores', '/users/register'].includes(req.originalUrl)){
         req.session.returnTo = req.originalUrl
     }
     res.locals.currentUser = req.user
@@ -80,6 +83,8 @@ app.use((req,res,next) => {
     next()
 })
 
+
+//helmet
 
 
 //routes
@@ -106,3 +111,4 @@ app.use((err, req ,res, next) => {
 app.listen(3000, () => {
     console.log('Listening on port 3000')
 })
+

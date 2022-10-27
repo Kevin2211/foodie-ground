@@ -14,10 +14,10 @@
         <% for(let store of stores) {%> 
             <div class="card mb-3 index-cards">
                 <div class="row">
-                    <div class="col-md-4">
-                        <img src="<%= store.images[0].url %> " class="img-fluid" alt="">
+                    <div class="col-lg-4 col-sm-12">
+                        <img src="<%= store.images[0].url %> "  alt="" style= "border-radius: 10px;">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-lg-8 col-sm-12" >
                         <div class="card-body">
                             <h5><%= store.title %></h5>
                             <p class="card-text"> <%= store.description %> </p>
