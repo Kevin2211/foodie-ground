@@ -37,7 +37,6 @@ module.exports.loginPost = (req, res) => {
     console.log(req.user)
     delete req.session.returnTo
     res.redirect(redirectUrl)
-
 }
 
 module.exports.logout = (req, res) => {

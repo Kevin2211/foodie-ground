@@ -87,7 +87,9 @@ app.use('/stores', storeRouter)
 app.use('/users', userRouter)
 
 
-
+app.get('/', (req,res) => {
+    res.render('landingPage')
+})
 
 app.all('*', (req,res, next) => {
     next(new ExpressError('Page not found', 404))
