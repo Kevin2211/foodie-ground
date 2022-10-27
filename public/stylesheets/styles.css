@@ -17,4 +17,12 @@ body{
     width: 100%;
     min-height: 100%;
     border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+#new-store{
+    object-fit: cover;
+    width: 100%;
+    min-height: 100%;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }

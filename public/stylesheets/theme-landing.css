@@ -4306,7 +4306,7 @@ fieldset:disabled .btn {
 .navbar-light .navbar-text a,
 .navbar-light .navbar-text a:focus,
 .navbar-light .navbar-text a:hover {
-    color: rgba(52, 71, 103, 0.9);
+    color: rgba(250, 250, 252, 0.9);
 }
 .navbar-dark .navbar-brand,
 .navbar-dark .navbar-brand:focus,
@@ -16186,12 +16186,12 @@ hr.horizontal.gray-light {
 }
 .navbar .nav-link,
 .navbar .navbar-brand {
-    color: var(--bs-dark);
-    font-size: 0.875rem;
+    color: white;
+
 }
 .navbar .nav-link {
     padding: 0.5rem 1rem;
-    font-weight: 400;
+    font-weight: 900;
 }
 .navbar.navbar-absolute {
     position: absolute;
@@ -16244,9 +16244,7 @@ hr.horizontal.gray-light {
 .navbar-light .navbar-toggler:focus {
     box-shadow: none;
 }
-.navbar-toggler .navbar-toggler-icon {
-    background-image: none;
-}
+
 .navbar-toggler .navbar-toggler-icon .navbar-toggler-bar {
     display: block;
     position: relative;
