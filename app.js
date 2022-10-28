@@ -51,10 +51,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(morgan('tiny'))
 app.engine('ejs', ejsMate)
 
+const sessionSecret = process.env.SECRET
 //use express session
 const store = new MongoDBStore({
     url: process.env.DB_URL,
-    secret: 'thanh123',
+    secret: sessionSecret,
     touchAfter: 24*3600
 })
 store.on('error', function (e) {
@@ -62,7 +63,7 @@ store.on('error', function (e) {
 })
 const sessionConfig ={
     store,
-    secret: 'thanh123',
+    secret: sessionSecret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -119,8 +120,8 @@ app.use((err, req ,res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-
-app.listen(3000, () => {
-    console.log('Listening on port 3000')
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
 })
 

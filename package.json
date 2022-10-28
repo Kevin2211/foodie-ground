@@ -4,19 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Kevin2211/campify.git"
+    "url": "git+https://github.com/Kevin2211/foodie-ground.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Kevin2211/campify/issues"
+    "url": "https://github.com/Kevin2211/foodie-ground/issues"
   },
-  "homepage": "https://github.com/Kevin2211/campify#readme",
+  "homepage": "https://github.com/Kevin2211/foodie-ground#readme",
   "dependencies": {
     "cloudinary": "^1.32.0",
     "connect-flash": "^0.1.1",
