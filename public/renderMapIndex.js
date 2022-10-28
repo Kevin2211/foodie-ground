@@ -1,13 +1,12 @@
 
 
 
-
  async function  initMap() {
 
     //get Lat and Lng from geocoding and stores 
     const getLatLng = async function (location){
         const trimmedLocation = location.replace(/ /g, '%20')
-        const geocoding = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${trimmedLocation}&key=AIzaSyAOJ3Z69jVGSid9yQf-U-NHdpq1lOHo1-c`)
+        const geocoding = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${trimmedLocation}&key=${apiKey}`)
         const data = await geocoding.json()
 
         return data.results[0].geometry.location
