@@ -18,6 +18,7 @@ const flash = require('connect-flash')
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
+const MongoDBStore = require('connect-mongo')(session)
 
 
 
@@ -49,7 +50,16 @@ app.use(morgan('tiny'))
 app.engine('ejs', ejsMate)
 
 //use express session
+const store = new MongoDBStore({
+    url: process.env.DB_URL,
+    secret: 'thanh123',
+    touchAfter: 24*3600
+})
+store.on('error', function (e) {
+    console.log('mongo store has error')
+})
 const sessionConfig ={
+    store,
     secret: 'thanh123',
     resave: false,
     saveUninitialized: true,

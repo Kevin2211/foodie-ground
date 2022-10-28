@@ -9,8 +9,8 @@ async function initMap() {
     
         })
         const lngLat = {
-            lng: -95.358421,
-            lat: 29.749907
+            lng: -97.358421,
+            lat: 38.749907
         }
         autocomplete.addListener('place_changed', () => {
 
@@ -38,7 +38,7 @@ async function initMap() {
 
         const map = new google.maps.Map(document.getElementById('map'), {
             center: lngLat,
-            zoom: 9
+            zoom: 4
         })
 
         const addBtn = document.getElementById('addMenuItem')
