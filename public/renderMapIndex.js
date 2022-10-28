@@ -18,7 +18,7 @@
             return {
                 lat: latLng.lat,
                 lng: latLng.lng,
-                url: `http://localhost:3000/stores/${store._id}`,
+                url: `https://shrouded-meadow-37611.herokuapp.com/stores/${store._id}`,
                 label: store.title
             }
     })
