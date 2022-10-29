@@ -1,5 +1,7 @@
-Foodie Ground. 
-Fullstack web application using ExpressJS, EJS, MongoDB, HTML, CSS, Javascript, Cloudinary(image upload) and Google Places API. 
+Foodie Ground.   
+
+Fullstack web application using ExpressJS, EJS, MongoDB, HTML, CSS, Javascript, Cloudinary(image upload) and Google Places API.   
+
 Link to live demo web app: https://shrouded-meadow-37611.herokuapp.com/ 
 
 
