@@ -15,7 +15,7 @@
             <div class="card mb-3 index-cards">
                 <div class="row">
                     <div class="col-lg-4 col-sm-12">
-                        <img src="<%= store.images[0].url %> "  alt="" style= "border-radius: 10px;">
+                        <img src="<%= store.images[0].url %> "  alt="" style= "border-radius: 10px; width: 100%;">
                     </div>
                     <div class="col-lg-8 col-sm-12" >
                         <div class="card-body">
@@ -34,9 +34,6 @@
 <script>
     const stores = <%- JSON.stringify(stores) %>
 </script>
-<script> 
-const apiKey = '<%- process.env.MAP_API_KEY %>'
-
-</script>
-<script src="/renderMapIndex.js"></script>
 <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+<script> const apiKey = '<%- process.env.MAP_API_KEY %>'</script>
+<script src="/renderMapIndex.js"></script>
