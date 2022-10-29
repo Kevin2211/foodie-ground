@@ -19,7 +19,7 @@ User account type
 * Users can also delete their own reviews
 * Each user can upload thei own profile picture and have their own profile information
 * Users can also view other people profiles.
-* Owner account type:
+Owner account type:
 * Owners create new stores with pictures, add items to the store's menu
 * Owners can add more pictures or delete pictures from their stores
 * Owners also have their own profile with a profile picture
