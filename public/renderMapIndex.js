@@ -61,7 +61,7 @@
 
     // Add a marker clusterer to manage the markers.
     new markerClusterer.MarkerClusterer({ markers, map })
-      console.log(markers)
+
     });
 
     
