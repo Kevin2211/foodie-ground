@@ -18,7 +18,7 @@ Owner account type can create, edit their stores:
 
 ## Features
 ## User account type:
-* Users add stores to favorites, post a review and view stores
+* Users can add stores to favorites, post a review and view stores
 * Users can also delete their own reviews
 * Each user can upload thei own profile picture and have their own profile information
 * Users can also view other people profiles.
