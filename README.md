@@ -1,4 +1,4 @@
-Foodie Ground.   
+## Foodie Ground
 
 Fullstack web application using ExpressJS, EJS, MongoDB, HTML, CSS, Javascript, Cloudinary(image upload) and Google Places API.   
 
@@ -8,8 +8,6 @@ Link to live demo web app: https://shrouded-meadow-37611.herokuapp.com/
 <img width="2352" alt="Screen Shot 2022-10-29 at 9 37 10 AM" src="https://user-images.githubusercontent.com/36496209/198837595-10fdbce8-c5ca-44f9-b6dd-b7d1472aef32.png">
 Register Page:
 <img width="2352" alt="Screen Shot 2022-10-29 at 10 00 00 AM" src="https://user-images.githubusercontent.com/36496209/198838563-8bf5a67a-6d95-4894-82a0-f916c4e7a3c6.png">
-age:
-
 Login page with authenthication:
 <img width="2352" alt="Screen Shot 2022-10-29 at 9 37 58 AM" src="https://user-images.githubusercontent.com/36496209/198837691-9b5a9aba-262d-4c97-8695-2e8d0e570e6f.png">
 Live map with link to individual store page:
