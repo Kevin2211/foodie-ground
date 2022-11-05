@@ -2,7 +2,7 @@
 
 Fullstack web application using: ExpressJS, EJS, MongoDB, HTML, CSS, Javascript, Bootstrap, Passport, Joi (server-side validation), Cloudinary(image upload) and Google Places API.   
 
-Link to live demo web app: https://shrouded-meadow-37611.herokuapp.com/
+Link to live demo web app: https://shrouded-meadow-37611.herokuapp.com/ <br />
 Demo Login<br />
 Username: admin<br />
 Password: thanh<br />
