@@ -1,11 +1,27 @@
 ## Foodie Ground
 
-Fullstack web application using: ExpressJS, EJS, MongoDB, HTML, CSS, Javascript, Bootstrap, Passport, Joi (server-side validation), Cloudinary(image upload) and Google Places API.   
+Welcome to the Yelp Clone project! This project is a full-stack web application that allows users to search for and review restaurants. Restaurant owners are also able to add their own stores to the platform and populate them on a Google map using the Google Maps API.
 
-Link to live demo web app: https://shrouded-meadow-37611.herokuapp.com/ <br />
+Link to live demo web app: https://foodie-ground.onrender.com/ <br />
 Demo Login<br />
 Username: admin<br />
 Password: thanh<br />
+
+<strong>Technologies Used</strong><br/>
+-React.js <br/>
+-Express.js <br/>
+-MongoDB<br/>
+-Cloudinary<br/>
+-JSON Web Tokens (JWT) for authentication<br/>
+-Google Maps API<br/>
+<strong>Features</strong><br/>
+-Search for restaurants by location or name<br/>
+-View detailed information about a specific restaurant, including its location on a map and user reviews<br/>
+-Leave a review for a restaurant<br/>
+-Restaurant owners can add their own stores to the platform and populate them on a Google map<br/>
+-Protected routes with JWT authentication for restaurant owners to manage their stores <br/>
+
+
 
 
 <img width="2352" alt="Screen Shot 2022-10-29 at 9 37 10 AM" src="https://user-images.githubusercontent.com/36496209/198837595-10fdbce8-c5ca-44f9-b6dd-b7d1472aef32.png">
